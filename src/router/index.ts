@@ -33,7 +33,7 @@ const router = createRouter({
     },
     {
       name: "notfound",
-      path: "/404",
+      path: "/notfound",
       component: NotFound,
     },
   ],

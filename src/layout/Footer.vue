@@ -1,7 +1,7 @@
 
 <template>
     <a-layout-footer class="footer">
-        项目开发者 (尘心)
+        开发者 - 尘心
     </a-layout-footer>
 </template>
 <script>
