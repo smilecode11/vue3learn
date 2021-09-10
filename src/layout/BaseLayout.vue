@@ -29,6 +29,7 @@ export default {
     min-height: 100vh;
     
 }
+
 .header,.footer{
     height: 60px;
     color:#fff;

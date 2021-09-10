@@ -2,7 +2,10 @@
  * apis link file
  */
 
-const user = {};
+const user = {
+    login: '/user/login',
+    logout: '/user/logout'
+};
 
 export default {
     user

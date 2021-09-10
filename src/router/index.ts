@@ -3,6 +3,7 @@ import Index from "../views/Index.vue";
 import Home from "../views/Home.vue";
 import TemplateDetail from "../views/TemplateDetail.vue";
 import Editor from "../views/Editor.vue";
+import Setting from "../views/Setting.vue";
 import NotFound from "../views/NotFound.vue";
 
 const router = createRouter({
@@ -30,6 +31,11 @@ const router = createRouter({
       name: "editor",
       path: "/editor/:id",
       component: Editor,
+    },
+    {
+      name: 'setting',
+      path: '/setting',
+      component:Setting
     },
     {
       name: "notfound",

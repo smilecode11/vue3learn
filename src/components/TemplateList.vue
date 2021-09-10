@@ -2,31 +2,38 @@
   <div class="template-list-component">
     <a-row :gutter="16">
       <a-col :span="6" v-for="item in list" :key="item.id" class="poster-item">
-        <router-link :to="(type === 'work') ? `/template/${item.id}` : `/template/${item.id}`">
+        <router-link
+          :to="
+            type === 'work' ? `/template/${item.id}` : `/template/${item.id}`
+          "
+        >
           <a-card hoverable>
             <template v-slot:cover>
-              <img :src="item.coverImg"  v-if="item.coverImg" />
-              <img src="http://typescript-vue.oss-cn-beijing.aliyuncs.com/vue-marker/5f81cca3f3bf7a0e1ebaf885.png"  v-else />
+              <img :src="item.coverImg" v-if="item.coverImg" />
+              <img
+                src="http://typescript-vue.oss-cn-beijing.aliyuncs.com/vue-marker/5f81cca3f3bf7a0e1ebaf885.png"
+                v-else
+              />
               <div class="hover-item">
-                <a-button size="large" type="primary">{{(type === 'work') ? '编辑该作品': '使用该模版创建'}}</a-button>
+                <a-button size="large" type="primary">{{
+                  type === "work" ? "编辑该作品" : "使用该模版创建"
+                }}</a-button>
               </div>
             </template>
             <a-card-meta :title="item.title">
               <template v-slot:description>
                 <div class="description-detail">
-                  <span v-if="item.user">作者：{{item.user.nickName}}</span>
-                  <span class="user-number"><UserOutlined /> {{item.copiedCount}}</span>
+                  <span v-if="item.author">作者：{{item.author}}</span>
+                  <span class="user-number"
+                    ><UserOutlined /> {{ item.copidCount }}</span
+                  >
                 </div>
               </template>
             </a-card-meta>
           </a-card>
           <div class="tag-list">
-            <a-tag color="red" v-if="item.isHot">
-              HOT
-            </a-tag>
-            <a-tag color="green" v-if="item.isNew">
-              NEW
-            </a-tag>
+            <a-tag color="red" v-if="item.isHot"> HOT </a-tag>
+            <a-tag color="green" v-if="item.isNew"> NEW </a-tag>
           </div>
         </router-link>
       </a-col>
@@ -35,23 +42,24 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import { UserOutlined } from '@ant-design/icons-vue';
+import { defineComponent, PropType } from "vue";
+import { UserOutlined } from "@ant-design/icons-vue";
+import { TemplateProps } from "../store/index";
 export default defineComponent({
-  name: 'template-list',
+  name: "template-list",
   components: {
-    UserOutlined
+    UserOutlined,
   },
   props: {
     list: {
-      type: Array,
-      required: true
+      type: Array as PropType<TemplateProps[]>,
+      default:()=>[]
     },
-    type: {
-      type: String,
-      default: 'work'
+    type:{
+      type:String,
+      default:()=>("")
     }
-  }
+  },
 });
 </script>
 
@@ -92,7 +100,7 @@ export default defineComponent({
   box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.1);
 }
 .poster-item .ant-card-body {
-  padding: 0
+  padding: 0;
 }
 .poster-item .ant-card-meta {
   margin: 0;
@@ -124,8 +132,8 @@ export default defineComponent({
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
 }
-.poster-item .ant-card-cover  img {
-  transition: all ease-in .2s;
+.poster-item .ant-card-cover img {
+  transition: all ease-in 0.2s;
 }
 .hover-item {
   position: absolute;
@@ -134,7 +142,7 @@ export default defineComponent({
   width: 100%;
   height: 100%;
   display: none;
-  background: rgba(0, 0, 0, .8);
+  background: rgba(0, 0, 0, 0.8);
   align-items: center;
   justify-content: center;
   border-top-left-radius: 12px;

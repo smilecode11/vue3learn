@@ -1,7 +1,18 @@
 import Http from './index';
-
-class UserModel extends Http{
-
+import {
+    user
+} from './apis';
+class UserModel extends Http {
+    /** 登录*/
+    login({
+        params
+    }) {
+        return this.request({
+            url: user.login,
+            method: 'post',
+            params
+        });
+    }
 }
 
 export default UserModel;
