@@ -9,7 +9,7 @@ import TemplateList from "../components/TemplateList.vue";
 
 import { computed, defineComponent } from "vue";
 import { useStore } from "vuex";
-import { GlobalDataProps } from "../store/index";
+import {GlobalDataProps} from "../store/index";
 export default defineComponent({
   name: "home-page",
   components: {
@@ -17,7 +17,7 @@ export default defineComponent({
   },
   setup() {
     const store = useStore<GlobalDataProps>();
-    const testData = computed(() => store.state.templates);
+    const testData = computed(() => store.state.templates.data);
     return {
       testData,
     };

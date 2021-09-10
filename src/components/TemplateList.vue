@@ -44,7 +44,7 @@
 <script lang="ts">
 import { defineComponent, PropType } from "vue";
 import { UserOutlined } from "@ant-design/icons-vue";
-import { TemplateProps } from "../store/index";
+import { TemplateProps } from "../store/templates";
 export default defineComponent({
   name: "template-list",
   components: {
