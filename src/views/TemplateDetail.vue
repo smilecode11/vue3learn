@@ -17,9 +17,11 @@
           <canvas id="barcode-container"></canvas>
         </div>
         <div class="use-button">
-          <router-link to="/editor">
-            <a-button type="primary" size="large">使用模版</a-button>
-          </router-link>
+          <!-- <router-link> -->
+          <a-button @click="handleRouterGoEditor" type="primary" size="large"
+            >使用模版</a-button
+          >
+          <!-- </router-link> -->
           <a-button size="large" @click="download">下载图片海报</a-button>
         </div>
       </a-col>
@@ -29,7 +31,7 @@
 
 <script lang="ts">
 import { defineComponent, computed } from "vue";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import { useStore } from "vuex";
 import { GlobalDataProps } from "../store/index";
 import { TemplateProps } from "../store/templates";
@@ -42,13 +44,19 @@ export default defineComponent({
     const template = computed<TemplateProps>(() =>
       store.getters.getTemplateById(currentId)
     );
-
     const download = () => {
       console.log("TODO: download");
+    };
+    const router = useRouter();
+    const handleRouterGoEditor = () => {
+      router.push({
+        path: `/editor/${currentId}`,
+      });
     };
     return {
       template,
       download,
+      handleRouterGoEditor,
     };
   },
 });
